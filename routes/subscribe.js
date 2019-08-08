@@ -14,7 +14,6 @@ router.post('/subscribe', (req,res) => {
 
   // Passing object into sendNotification
   webpush.sendNotification(subscription, payload).catch(console.error(err));
-  );
 });
 
 module.exports = router;
