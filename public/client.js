@@ -20,8 +20,20 @@ async function send()
     console.log('Registering push..');
     const subscription = await register.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: publicVapidKey
+        applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
     })
+    console.log('Push registered!');
+
+    //Sending push notification
+    console.log('Sending push notification');
+    await fetch('/subscribe'. {
+        method: 'POST',
+        body: JSON.stringify(subscription),
+        headers: {
+            'content-type': 'application/json'
+        }
+    });
+    console.log('Push Sent!')
 }
 
 function urlBase64ToUint8Array(base64String) {
