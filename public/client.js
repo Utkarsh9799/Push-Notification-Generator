@@ -3,7 +3,7 @@ const publicVapidKey = 'BGElE2g3jSv8XpleYspc4A9YX-NGcub-s4pK9uX-zojO3FPpDBzYqaEN
 // Checking for service worker
 if('serviceWorker' in navigator)
 {
-    send().catch(err => console.error(err));
+    send().catch(err => console.log(err));
 }
 
 // Registering service worker, push and send push
@@ -26,7 +26,7 @@ async function send()
 
     //Sending push notification
     console.log('Sending push notification');
-    await fetch('/subscribe'. {
+    await fetch('/subscribe', {
         method: 'POST',
         body: JSON.stringify(subscription),
         headers: {
